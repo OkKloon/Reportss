@@ -17,7 +17,7 @@ public class CMD implements CommandExecutor {
 
                 Player player = Bukkit.getPlayerExact(args[0]);
                 if (player != null) {
-                    checkOnlineOP(player, p);
+                    sendReportToOps(player, p);
                 } else {
                     sender.sendMessage(CommonStrings.DOESNT_EXIST);
                 }
@@ -25,7 +25,7 @@ public class CMD implements CommandExecutor {
         }
         return false;
     }
-    public void checkOnlineOP(Player player, Player sender) {
+    public void sendReportToOps(Player player, Player sender) {
         for(Player players : Bukkit.getServer().getOnlinePlayers()) {
             if(players.isOp()) {
              players.sendMessage(ChatColor.RED + "Jauns paziņojums: Spēlētāja vārds: " + player.getName());
